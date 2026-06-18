@@ -70,6 +70,8 @@ function getAudioContext() {
 function activateAppScreen(screenName, updateHash = true) {
   const target = appTitles[screenName] ? screenName : "home";
 
+  document.body.classList.toggle("is-home-screen", target === "home");
+
   appScreens.forEach((screen) => {
     screen.classList.toggle("is-active", screen.dataset.screen === target);
   });
@@ -810,12 +812,17 @@ playButton.addEventListener("click", playCurrent);
   const SETTINGS_KEY = "morsePractice.settings.v1";
   const PROGRESS_KEY = "morsePractice.progress.v1";
   const LISTENING_RECORDS_KEY = "morseListeningPractice.records.v1";
+  const inheritedListeningSettings = loadListeningSettings();
+  const inheritedSessionState = window.MorsePracticeSession.getState();
 
   const defaultSettings = {
     speedWpm: 18,
     pitchHz: 600,
     volume: 70,
+    letterGapMultiplier: Number(inheritedListeningSettings.letterGapMultiplier) || 1,
+    wordGapMultiplier: Number(inheritedListeningSettings.wordGapMultiplier) || 1,
     level: "single",
+    questionCount: Number(inheritedSessionState.questionCount) || 10,
     targetSet: "letters",
     customTargets: "",
     keyingDotThresholdMs: 240,
@@ -1061,9 +1068,21 @@ playButton.addEventListener("click", playCurrent);
     setText('[data-output="speedWpm"]', `${settings.speedWpm} WPM`);
     setText('[data-output="pitchHz"]', `${settings.pitchHz} Hz`);
     setText('[data-output="volume"]', `${settings.volume}%`);
+    setText('[data-output="letterGapMultiplier"]', `${Number(settings.letterGapMultiplier).toFixed(2).replace(/\.?0+$/, "")}x`);
+    setText('[data-output="wordGapMultiplier"]', `${Number(settings.wordGapMultiplier).toFixed(2).replace(/\.?0+$/, "")}x`);
+    setText('[data-output="questionCount"]', `${settings.questionCount}問`);
     setText('[data-output="keyingDotThresholdMs"]', `${settings.keyingDotThresholdMs} ms`);
     const customField = qs("[data-custom-target-field]");
     if (customField) customField.hidden = settings.targetSet !== "custom";
+  };
+
+  const syncPracticeSettings = (settings) => {
+    window.MorsePracticeSession.setState({
+      level: settings.level,
+      questionCount: settings.questionCount,
+    });
+    refreshListeningSettings();
+    syncListeningSettingsControls();
   };
 
   const syncSettingsForm = () => {
@@ -1173,13 +1192,17 @@ playButton.addEventListener("click", playCurrent);
       speedWpm: Number(formData.get("speedWpm")),
       pitchHz: Number(formData.get("pitchHz")),
       volume: Number(formData.get("volume")),
+      letterGapMultiplier: Number(formData.get("letterGapMultiplier")),
+      wordGapMultiplier: Number(formData.get("wordGapMultiplier")),
       level: String(formData.get("level")),
+      questionCount: normalizedQuestionCount(Number(formData.get("questionCount"))),
       targetSet: String(formData.get("targetSet")),
       customTargets: String(formData.get("customTargets") || "").toUpperCase(),
       keyingDotThresholdMs: Number(formData.get("keyingDotThresholdMs")),
       theme: String(formData.get("theme")),
     });
     updateSettingOutputs(settings);
+    syncPracticeSettings(settings);
   });
 
   document.addEventListener("click", (event) => {
@@ -1188,7 +1211,8 @@ playButton.addEventListener("click", playCurrent);
     if (!action) return;
 
     if (action === "reset-settings") {
-      saveSettings(defaultSettings);
+      const settings = saveSettings(defaultSettings);
+      syncPracticeSettings(settings);
       syncSettingsForm();
     }
 

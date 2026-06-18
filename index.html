@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Morse Code Practice App</title>
-    <link rel="stylesheet" href="./styles.css?v=theme-toggle-20260607-1">
+    <link rel="stylesheet" href="./styles.css?v=settings-groups-20260618-1">
   </head>
-  <body>
+  <body class="is-home-screen">
     <header class="app-header glass-panel">
       <div>
         <p class="eyebrow">Morse Code Practice App</p>
@@ -16,21 +16,20 @@
         <button class="app-nav__button is-active" type="button" data-screen-target="home">Home</button>
         <button class="app-nav__button" type="button" data-screen-target="tutorial">チュートリアル</button>
         <button class="app-nav__button" type="button" data-screen-target="profile">マイページ</button>
-        <button class="app-nav__button" type="button" data-screen-target="settings">詳細設定</button>
+        <button class="app-nav__button app-nav__button--icon" type="button" data-screen-target="settings" aria-label="設定" title="設定">
+          <span class="settings-glyph" aria-hidden="true">&#9881;</span>
+        </button>
       </nav>
-      <button class="theme-toggle-button" type="button" data-action="toggle-theme" aria-label="テーマを切り替え">
-        <span class="theme-toggle-button__icon" aria-hidden="true">◐</span>
-        <span data-theme-toggle-label>ダーク</span>
+      <button class="theme-toggle-button" type="button" data-action="toggle-theme" aria-label="テーマを切り替え" title="ライト・ダークを切り替え">
+        <span class="theme-toggle-button__icon" aria-hidden="true"></span>
       </button>
     </header>
 
     <main class="app-main">
       <section class="app-screen is-active" data-screen="home" aria-labelledby="home-title">
         <div class="home-hero glass-panel">
-          <p class="eyebrow">Home</p>
-          <h2 id="home-title">モールス練習を始める</h2>
-          <p>最初に練習方法を選び、次にレベルと問題数を決めてから実練習へ進みます。</p>
-          <button class="primary-button start-button" type="button" data-action="open-mode-select">start</button>
+          <h2 id="home-title">Morse Practice App</h2>
+          <button class="primary-button start-button" type="button" data-action="open-mode-select">Start</button>
         </div>
       </section>
 
@@ -274,9 +273,6 @@
             <tbody data-history-table><tr><td colspan="5">まだ記録がありません。</td></tr></tbody>
           </table>
         </div>
-        <div class="settings-actions">
-          <button class="danger-button" type="button" data-action="clear-progress">記録を消去</button>
-        </div>
       </section>
 
       <section class="app-screen" data-screen="settings" aria-labelledby="settings-title">
@@ -285,27 +281,47 @@
           <h2 id="settings-title">詳細設定</h2>
           <p>テーマ、音、出題範囲など、練習前に細かく変えたい項目をここへ集約します。</p>
         </div>
-        <form class="settings-form glass-panel" data-settings-form>
-          <label class="field"><span>音の速さ <output data-output="speedWpm">18 WPM</output></span><input name="speedWpm" type="range" min="8" max="35" step="1"></label>
-          <label class="field"><span>ピッチ <output data-output="pitchHz">600 Hz</output></span><input name="pitchHz" type="range" min="350" max="900" step="10"></label>
-          <label class="field"><span>音量 <output data-output="volume">70%</output></span><input name="volume" type="range" min="0" max="100" step="1"></label>
-          <label class="field"><span>出題レベル</span><select name="level"><option value="single">1文字</option><option value="word">短い単語</option><option value="phrase">短文</option><option value="sentence">長文</option></select></label>
-          <label class="field"><span>練習対象</span><select name="targetSet"><option value="letters">A-Z</option><option value="numbers">0-9</option><option value="lettersNumbers">A-Z / 0-9</option><option value="custom">カスタム</option></select></label>
-          <label class="field" data-custom-target-field><span>カスタム対象</span><input name="customTargets" type="text" inputmode="latin" autocomplete="off" placeholder="例: A E I O U 1 2"></label>
-          <label class="field"><span>打鍵の短点上限 <output data-output="keyingDotThresholdMs">240 ms</output></span><input name="keyingDotThresholdMs" type="range" min="80" max="800" step="10"></label>
-          <fieldset class="theme-field">
-            <legend>表示テーマ</legend>
-            <label><input name="theme" type="radio" value="system">端末に合わせる</label>
-            <label><input name="theme" type="radio" value="light">ライト</label>
-            <label><input name="theme" type="radio" value="dark">ダーク</label>
-          </fieldset>
+        <form class="settings-form" data-settings-form>
+          <section class="settings-section" aria-labelledby="settings-audio-title">
+            <div class="settings-section__head"><p class="eyebrow">Audio</p><h3 id="settings-audio-title">音声</h3></div>
+            <div class="settings-section__grid">
+              <label class="field"><span>速度 <output data-output="speedWpm">18 WPM</output></span><input name="speedWpm" type="range" min="8" max="35" step="1"></label>
+              <label class="field"><span>ピッチ <output data-output="pitchHz">600 Hz</output></span><input name="pitchHz" type="range" min="350" max="900" step="10"></label>
+              <label class="field"><span>音量 <output data-output="volume">70%</output></span><input name="volume" type="range" min="0" max="100" step="1"></label>
+              <label class="field"><span>文字間隔 <output data-output="letterGapMultiplier">1x</output></span><input name="letterGapMultiplier" type="range" min="1" max="3" step="0.25"></label>
+              <label class="field"><span>語間隔 <output data-output="wordGapMultiplier">1x</output></span><input name="wordGapMultiplier" type="range" min="1" max="3" step="0.25"></label>
+            </div>
+          </section>
+          <section class="settings-section" aria-labelledby="settings-practice-title">
+            <div class="settings-section__head"><p class="eyebrow">Practice</p><h3 id="settings-practice-title">練習</h3></div>
+            <div class="settings-section__grid">
+              <label class="field"><span>既定レベル</span><select name="level"><option value="single">1文字</option><option value="word">短い単語</option><option value="phrase">短文</option><option value="sentence">長文</option></select></label>
+              <label class="field"><span>問題数 <output data-output="questionCount">10問</output></span><input name="questionCount" type="number" min="1" max="100" step="1" inputmode="numeric"></label>
+              <label class="field"><span>練習対象</span><select name="targetSet"><option value="letters">A-Z</option><option value="numbers">0-9</option><option value="lettersNumbers">A-Z / 0-9</option><option value="custom">カスタム</option></select></label>
+              <label class="field" data-custom-target-field><span>カスタム対象</span><input name="customTargets" type="text" inputmode="latin" autocomplete="off" placeholder="例: A E I O U 1 2"></label>
+              <label class="field"><span>打鍵の短点上限 <output data-output="keyingDotThresholdMs">240 ms</output></span><input name="keyingDotThresholdMs" type="range" min="80" max="800" step="10"></label>
+            </div>
+          </section>
+          <section class="settings-section" aria-labelledby="settings-display-title">
+            <div class="settings-section__head"><p class="eyebrow">Display</p><h3 id="settings-display-title">表示</h3></div>
+            <fieldset class="theme-field">
+              <legend>表示テーマ</legend>
+              <label><input name="theme" type="radio" value="system">端末に合わせる</label>
+              <label><input name="theme" type="radio" value="light">ライト</label>
+              <label><input name="theme" type="radio" value="dark">ダーク</label>
+            </fieldset>
+          </section>
+          <section class="settings-section" aria-labelledby="settings-data-title">
+            <div class="settings-section__head"><p class="eyebrow">Data</p><h3 id="settings-data-title">データ</h3><p>設定と練習記録はこの端末のブラウザ内に保存されます。</p></div>
+            <div class="settings-actions">
+              <button class="secondary-button" type="button" data-action="reset-settings">設定を標準に戻す</button>
+              <button class="danger-button" type="button" data-action="clear-progress">練習記録を消去</button>
+            </div>
+          </section>
         </form>
-        <div class="settings-actions">
-          <button class="secondary-button" type="button" data-action="reset-settings">標準に戻す</button>
-        </div>
       </section>
     </main>
 
-    <script src="./app.js?v=theme-toggle-20260607-1"></script>
+    <script src="./app.js?v=settings-groups-20260618-1"></script>
   </body>
 </html>

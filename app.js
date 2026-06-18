@@ -1,30 +1,30 @@
 const letters = [
-  { letter: "A", code: ".-", memo: "A は最初に軽く入ってから、右脚で長く支える形として「短・長」を思い出します。" },
-  { letter: "B", code: "-...", memo: "B は背骨を長く置き、丸みを三つの軽い点として追うと「長・短・短・短」です。" },
-  { letter: "C", code: "-.-.", memo: "C は大きな弧を長く始め、内側で短く返し、また長く回って短く閉じると考えます。" },
-  { letter: "D", code: "-..", memo: "D は縦棒を長く打ち、右の丸みを二つの短い反応として「長・短・短」です。" },
-  { letter: "E", code: ".", memo: "E は横棒が一つ。最小の印として短点一つです。" },
-  { letter: "F", code: "..-.", memo: "F は上の二本を軽く、縦を長く、最後に中段を軽く戻す形で「短・短・長・短」です。" },
-  { letter: "G", code: "--.", memo: "G は大きく回る力を二回長く取り、最後の小さな口を短点にします。" },
-  { letter: "H", code: "....", memo: "H は左右の柱と横棒を細かく分け、四つの短い打点として覚えます。" },
-  { letter: "I", code: "..", memo: "I は上下の印を二つの短点として見ると「短・短」です。" },
-  { letter: "J", code: ".---", memo: "J は上の小さな点から入り、下へ大きく長く伸びる流れで「短・長・長・長」です。" },
-  { letter: "K", code: "-.-", memo: "K は縦を長く、斜めで短く切り返し、もう一度長く開く形です。" },
-  { letter: "L", code: ".-..", memo: "L は小さく始め、縦を長く落とし、足を二つの短い動きに分けます。" },
-  { letter: "M", code: "--", memo: "M は二本の山をどちらも長く押すので「長・長」です。" },
-  { letter: "N", code: "-.", memo: "N は斜めの大きな流れを長く、終点を短く置いて「長・短」です。" },
-  { letter: "O", code: "---", memo: "O は丸を三つの長い弧に分けて「長・長・長」です。" },
-  { letter: "P", code: ".--.", memo: "P は小さく始め、縦と丸みを長く取り、最後を短く閉じます。" },
-  { letter: "Q", code: "--.-", memo: "Q は O の長い回転に、短いしっぽ、最後の長い押しを加える形です。" },
-  { letter: "R", code: ".-.", memo: "R は小さく入り、縦を長く支え、斜め足を短く出して「短・長・短」です。" },
-  { letter: "S", code: "...", memo: "S は曲線を三つの短い区切りでなぞるので「短・短・短」です。" },
-  { letter: "T", code: "-", memo: "T は一本の横棒。短点より長く保つ長点一つです。" },
-  { letter: "U", code: "..-", memo: "U は左右の上端を短く置き、底の曲線を長く支える形です。" },
-  { letter: "V", code: "...-", memo: "V は細かく三回落ちて、最後に長く開く「短・短・短・長」です。" },
-  { letter: "W", code: ".--", memo: "W は小さく入ってから二つの山を長く押すので「短・長・長」です。" },
-  { letter: "X", code: "-..-", memo: "X は大きな斜線で長く入り、交点を短く二回、最後に長く抜けます。" },
-  { letter: "Y", code: "-.--", memo: "Y は上の分岐を長く、中心を短く、下へ二回長く流す形です。" },
-  { letter: "Z", code: "--..", memo: "Z は上辺と斜めを長く取り、下辺を二つの短い終点として覚えます。" }
+  { letter: "A", code: ".-", memo: "Begin with a light dot, then use A's supporting right leg to recall the longer dash." },
+  { letter: "B", code: "-...", memo: "Treat the spine as one long dash, then follow the three rounded sections as three dots." },
+  { letter: "C", code: "-.-.", memo: "Trace the open curve as a long sweep, a short turn, another long sweep, and a short finish." },
+  { letter: "D", code: "-..", memo: "Use the upright stem as a dash and split the rounded side into two short dots." },
+  { letter: "E", code: ".", memo: "E is the smallest one-mark cue in this set: one dot." },
+  { letter: "F", code: "..-.", memo: "Read two light top strokes, the long upright, and one short middle return: dot dot dash dot." },
+  { letter: "G", code: "--.", memo: "Follow two broad sweeps, then close with the small opening as one dot." },
+  { letter: "H", code: "....", memo: "Break its two uprights and crossbar into four short beats: four dots." },
+  { letter: "I", code: "..", memo: "See the top and bottom endpoints as two short dots." },
+  { letter: "J", code: ".---", memo: "Start with the small top mark, then follow the long downward curve as three dashes." },
+  { letter: "K", code: "-.-", memo: "Use the upright as a dash, make a short turn at the junction, then open with another dash." },
+  { letter: "L", code: ".-..", memo: "Start lightly, drop through the long upright, then divide the foot into two short beats." },
+  { letter: "M", code: "--", memo: "Its two strong slopes form two long beats: dash dash." },
+  { letter: "N", code: "-.", memo: "Follow the long diagonal motion, then place a short endpoint: dash dot." },
+  { letter: "O", code: "---", memo: "Divide the round outline into three broad arcs: three dashes." },
+  { letter: "P", code: ".--.", memo: "Enter with a dot, carry the stem and bowl as two long beats, then close with a dot." },
+  { letter: "Q", code: "--.-", memo: "Use O's broad motion for two dashes, add the small tail as a dot, then finish with a dash." },
+  { letter: "R", code: ".-.", memo: "Enter lightly, support the center with a long stroke, then send out the diagonal leg as a dot." },
+  { letter: "S", code: "...", memo: "Trace the curve in three short sections: dot dot dot." },
+  { letter: "T", code: "-", memo: "Its single top bar is one sustained dash." },
+  { letter: "U", code: "..-", memo: "Place two short upper endpoints, then support the bottom curve with a dash." },
+  { letter: "V", code: "...-", memo: "Move through three short beats, then open the final stroke into a dash." },
+  { letter: "W", code: ".--", memo: "Enter with one dot, then follow the two strong slopes as two dashes." },
+  { letter: "X", code: "-..-", memo: "Enter on a long diagonal, mark the crossing with two dots, and leave on another dash." },
+  { letter: "Y", code: "-.--", memo: "Use a dash for the first branch, a dot at the junction, then two dashes down the stem." },
+  { letter: "Z", code: "--..", memo: "Follow the top and diagonal as two long beats, then finish the lower edge with two dots." }
 ];
 
 const grid = document.querySelector(".letter-grid");
@@ -39,13 +39,13 @@ const appScreens = [...document.querySelectorAll("[data-screen]")];
 const appNavButtons = [...document.querySelectorAll("[data-screen-target]")];
 const appTitles = {
   home: "Home",
-  mode: "練習方法を選択",
-  session: "レベルと問題数",
-  listening: "リスニング練習",
-  keying: "打鍵練習",
-  tutorial: "チュートリアル",
-  profile: "マイページ",
-  settings: "詳細設定"
+  mode: "Choose a practice mode",
+  session: "Level and question count",
+  listening: "Listening Practice",
+  keying: "Keying Practice",
+  tutorial: "Tutorial",
+  profile: "Profile",
+  settings: "Settings"
 };
 const sessionStateKey = "morsePractice.session.v1";
 const defaultSessionState = {
@@ -71,6 +71,11 @@ function activateAppScreen(screenName, updateHash = true) {
   const target = appTitles[screenName] ? screenName : "home";
 
   document.body.classList.toggle("is-home-screen", target === "home");
+  document.body.dataset.activeScreen = target;
+  document.body.classList.toggle("is-scroll-screen", target === "settings" || target === "tutorial");
+  document.body.classList.toggle("is-tutorial-screen", target === "tutorial");
+  document.body.classList.toggle("is-keying-screen", target === "keying");
+  document.body.classList.toggle("is-listening-screen", target === "listening");
 
   appScreens.forEach((screen) => {
     screen.classList.toggle("is-active", screen.dataset.screen === target);
@@ -87,11 +92,25 @@ function activateAppScreen(screenName, updateHash = true) {
     title.textContent = appTitles[target];
   }
 
+  const profileNavButton = document.querySelector('[data-screen-target="profile"]');
+  if (profileNavButton) {
+    profileNavButton.textContent = "Profile";
+  }
+
   if (updateHash && window.location.hash !== `#app-${target}`) {
     history.pushState(null, "", `#app-${target}`);
   }
 
   window.scrollTo({ top: 0, behavior: "smooth" });
+
+  if (target !== "home" && target !== "settings" && target !== "tutorial") {
+    window.requestAnimationFrame(() => {
+      const activeScreen = appScreens.find((screen) => screen.dataset.screen === target);
+      if (activeScreen && activeScreen.scrollHeight > activeScreen.clientHeight + 1) {
+        document.body.classList.add("is-scroll-screen");
+      }
+    });
+  }
 }
 
 function screenFromHash() {
@@ -154,21 +173,21 @@ function saveSessionState(nextState) {
 }
 
 function sessionModeLabel(mode = sessionState.mode) {
-  return mode === "keying" ? "打鍵練習" : "リスニング練習";
+  return mode === "keying" ? "Keying" : "Listening";
 }
 
 function renderSessionLevelLabels() {
   const listeningLabels = {
-    single: "1文字",
-    word: "短い単語",
-    phrase: "短文",
-    sentence: "長文"
+    single: "Single character",
+    word: "Short word",
+    phrase: "Phrase",
+    sentence: "Sentence"
   };
   const keyingLabels = {
-    single: "初級",
+    single: "Beginner",
     word: "A-Z",
     phrase: "0-9",
-    sentence: "英数字"
+    sentence: "Letters and numbers"
   };
   const labels = sessionState.mode === "keying" ? keyingLabels : listeningLabels;
   document.querySelectorAll('input[name="sessionLevel"]').forEach((input) => {
@@ -183,7 +202,10 @@ function renderSessionState() {
     node.textContent = sessionModeLabel();
   });
   document.querySelectorAll("[data-session-summary]").forEach((node) => {
-    node.textContent = `第${sessionState.currentQuestion}問 / ${sessionState.questionCount}問`;
+    const isListeningSummary = Boolean(node.closest('[data-screen="listening"]'));
+    node.textContent = isListeningSummary
+      ? `Question ${sessionState.currentQuestion} of ${sessionState.questionCount}`
+      : `Question ${sessionState.currentQuestion} / ${sessionState.questionCount}`;
   });
 
   const levelInput = document.querySelector(`input[name="sessionLevel"][value="${sessionState.level}"]`);
@@ -332,7 +354,7 @@ function selectLetter(letter) {
   selectedCode.textContent = current.code;
   selectedMemo.textContent = current.memo;
   if (selectedVideoNote) {
-    selectedVideoNote.textContent = `${current.letter} = ${current.code}。動画説明欄の A-Z 符号列に基づきます。`;
+    selectedVideoNote.textContent = `The code shown for ${current.letter} is "${current.code}". This matches the A-Z code list in the video description.`;
   }
   shape.textContent = current.letter;
   shape.dataset.letter = current.letter;
@@ -467,17 +489,17 @@ function setListeningChallenge() {
   if (form) form.elements.answer.value = "";
   if (result) {
     result.className = "listening-result is-empty";
-    result.textContent = "まだ判定していません。";
+    result.textContent = "No answer checked yet.";
   }
-  if (status) status.textContent = "再生できます";
-  if (count) count.textContent = `第${listeningState.questionCount}問 / 全${listeningState.totalQuestions}問`;
+  if (status) status.textContent = "Ready to play";
+  if (count) count.textContent = `Question ${listeningState.questionCount} of ${listeningState.totalQuestions}`;
   renderListeningSessionSummary();
   focusListeningAnswer();
 }
 
 function renderListeningSessionSummary() {
   qsaListening("[data-listening-session-summary]").forEach((node) => {
-    node.textContent = `${listeningState.totalQuestions}問中 ${listeningState.answeredCount}問回答 / 正解 ${listeningState.correctCount}問`;
+    node.textContent = `${listeningState.answeredCount} of ${listeningState.totalQuestions} answered / ${listeningState.correctCount} correct`;
   });
   qsaListening("[data-listening-session-level]").forEach((node) => {
     node.textContent = sessionLevelLabel(listeningState.level);
@@ -486,10 +508,10 @@ function renderListeningSessionSummary() {
 
 function sessionLevelLabel(level) {
   const labels = {
-    single: "1文字",
-    word: "短い単語",
-    phrase: "複数語の短文",
-    sentence: "ある程度長い文章"
+    single: "Single Character",
+    word: "Short Word",
+    phrase: "Short Phrase",
+    sentence: "Long Text"
   };
   return labels[level] || level;
 }
@@ -500,11 +522,11 @@ function finishListeningSession() {
   const result = qsListening("[data-listening-result]");
   const status = qsListening("[data-listening-status]");
   const count = qsListening("[data-listening-question-count]");
-  if (status) status.textContent = "セッション完了";
-  if (count) count.textContent = `完了 / 全${listeningState.totalQuestions}問`;
+  if (status) status.textContent = "Session complete";
+  if (count) count.textContent = `Completed ${listeningState.totalQuestions} of ${listeningState.totalQuestions}`;
   if (result) {
     result.className = "listening-result is-correct listening-complete";
-    result.innerHTML = `<strong>完了</strong><p>${listeningState.totalQuestions}問中 ${listeningState.correctCount}問正解です。</p>`;
+    result.innerHTML = `<strong>Complete</strong><p>${listeningState.correctCount} of ${listeningState.totalQuestions} correct.</p>`;
   }
   renderListeningSessionSummary();
   focusListeningAnswer();
@@ -577,7 +599,7 @@ async function playListeningChallenge() {
 function setListeningPlayback(isPlaying) {
   listeningState.isPlaying = isPlaying;
   const status = qsListening("[data-listening-status]");
-  if (status) status.textContent = isPlaying ? "再生中" : "入力して判定できます";
+  if (status) status.textContent = isPlaying ? "Playing" : "Enter your answer";
   qsaListening('[data-action="play-listening"], [data-action="replay-listening"], [data-action="next-listening"]').forEach((button) => {
     button.disabled = isPlaying;
   });
@@ -607,8 +629,8 @@ function checkListeningAnswer(event) {
 
   result.className = `listening-result ${isCorrect ? "is-correct" : "is-wrong"}`;
   result.innerHTML = isCorrect
-    ? `<strong>正解</strong><p>${expected}</p>`
-    : `<strong>不正解</strong><p>正解: ${expected}</p><p>入力: ${answer || "未入力"}</p>`;
+    ? `<strong>Correct</strong><p>${expected}</p>`
+    : `<strong>Incorrect</strong><p>Correct answer: ${expected}</p><p>Your answer: ${answer || "No answer"}</p>`;
 
   saveListeningRecord(record);
   appendListeningCard(record);
@@ -629,7 +651,7 @@ function checkListeningAnswer(event) {
       setListeningChallenge();
       playListeningChallenge().catch(() => {
         const status = qsListening("[data-listening-status]");
-        if (status) status.textContent = "再生ボタンで再生できます";
+        if (status) status.textContent = "Use Play to hear the question";
         focusListeningAnswer();
       });
     }, 650);
@@ -643,9 +665,9 @@ function appendListeningCard(record) {
   const card = document.createElement("article");
   card.className = `listening-stack-card ${record.isCorrect ? "is-correct" : "is-wrong"}`;
   card.innerHTML = `
-    <span>${record.isCorrect ? "正解" : "不正解"}</span>
+    <span>${record.isCorrect ? "Correct" : "Incorrect"}</span>
     <strong>${record.promptText}</strong>
-    <small>入力: ${record.userAnswer || "未入力"}</small>
+    <small>Answer: ${record.userAnswer || "None"}</small>
   `;
   stack.prepend(card);
 
@@ -661,16 +683,16 @@ function renderListeningHistory() {
   if (!list || !accuracy) return;
 
   if (records.length === 0) {
-    list.innerHTML = "<li>記録はまだありません。</li>";
+    list.innerHTML = "<li>No results yet.</li>";
     accuracy.textContent = "--";
     return;
   }
 
   list.innerHTML = records.slice(0, 6).map((record) => `
     <li>
-      <span class="${record.isCorrect ? "correct" : "wrong"}">${record.isCorrect ? "正解" : "不正解"}</span>
+      <span class="${record.isCorrect ? "correct" : "wrong"}">${record.isCorrect ? "Correct" : "Incorrect"}</span>
       <strong>${record.promptText}</strong>
-      <small>${record.level}</small>
+      <small>${sessionLevelLabel(record.level)}</small>
     </li>
   `).join("");
 
@@ -740,7 +762,7 @@ async function startListeningPractice(options = {}) {
     await playListeningChallenge();
   } catch {
     const status = qsListening("[data-listening-status]");
-    if (status) status.textContent = "再生ボタンで再生できます";
+    if (status) status.textContent = "Use Play to hear the question";
     focusListeningAnswer();
   }
 }
@@ -858,12 +880,15 @@ playButton.addEventListener("click", playCurrent);
     document.documentElement.dataset.themePreference = theme || "system";
     document.documentElement.style.colorScheme = resolvedTheme;
     const isDark = resolvedTheme === "dark";
+    document.querySelectorAll(".theme-toggle-button__icon").forEach((node) => {
+      node.textContent = isDark ? "☾" : "☀︎";
+    });
     document.querySelectorAll("[data-theme-toggle-label]").forEach((node) => {
       node.textContent = isDark ? "Dark" : "Light";
     });
     document.querySelectorAll("[data-action=\"toggle-theme\"]").forEach((button) => {
       button.setAttribute("aria-pressed", String(isDark));
-      button.setAttribute("aria-label", isDark ? "ライトモードに切り替え" : "ダークモードに切り替え");
+      button.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
     });
   };
 
@@ -1046,7 +1071,7 @@ playButton.addEventListener("click", playCurrent);
 
   const formatDate = (iso) => {
     if (!iso) return "-";
-    return new Intl.DateTimeFormat("ja-JP", {
+    return new Intl.DateTimeFormat("en-US", {
       month: "2-digit",
       day: "2-digit",
       hour: "2-digit",
@@ -1055,7 +1080,7 @@ playButton.addEventListener("click", playCurrent);
   };
 
   const modeLabel = (mode) => {
-    const labels = { listening: "リスニング", keying: "打鍵", unknown: "未分類" };
+    const labels = { listening: "Listening", keying: "Keying", unknown: "Unknown" };
     return labels[mode] || mode;
   };
 
@@ -1070,7 +1095,7 @@ playButton.addEventListener("click", playCurrent);
     setText('[data-output="volume"]', `${settings.volume}%`);
     setText('[data-output="letterGapMultiplier"]', `${Number(settings.letterGapMultiplier).toFixed(2).replace(/\.?0+$/, "")}x`);
     setText('[data-output="wordGapMultiplier"]', `${Number(settings.wordGapMultiplier).toFixed(2).replace(/\.?0+$/, "")}x`);
-    setText('[data-output="questionCount"]', `${settings.questionCount}問`);
+    setText('[data-output="questionCount"]', `${settings.questionCount} questions`);
     setText('[data-output="keyingDotThresholdMs"]', `${settings.keyingDotThresholdMs} ms`);
     const customField = qs("[data-custom-target-field]");
     if (customField) customField.hidden = settings.targetSet !== "custom";
@@ -1109,10 +1134,10 @@ playButton.addEventListener("click", playCurrent);
       <div>
         <strong>${escapeHtml(attempt.expected || attempt.prompt)}</strong>
         <div class="result-meta">
-          ${formatDate(attempt.createdAt)} / ${escapeHtml(modeLabel(attempt.mode))} / 回答: ${escapeHtml(attempt.answer || "-")}
+          ${formatDate(attempt.createdAt)} / ${escapeHtml(modeLabel(attempt.mode))} / Answer: ${escapeHtml(attempt.answer || "-")}
         </div>
       </div>
-      <span class="status-pill ${attempt.correct ? "correct" : "wrong"}">${attempt.correct ? "正解" : "不正解"}</span>
+      <span class="status-pill ${attempt.correct ? "correct" : "wrong"}">${attempt.correct ? "Correct" : "Incorrect"}</span>
     </div>
   `;
 
@@ -1130,19 +1155,19 @@ playButton.addEventListener("click", playCurrent);
           <div class="result-item">
             <div>
               <strong>${escapeHtml(item.key)}</strong>
-              <div class="result-meta">不正解 ${item.wrong} 回 / 練習 ${item.total} 回</div>
+              <div class="result-meta">Incorrect ${item.wrong} / Attempts ${item.total}</div>
             </div>
-            <span class="status-pill wrong">要復習</span>
+            <span class="status-pill wrong">Review</span>
           </div>
         `).join("")
-        : '<p class="result-meta">まだ不正解の記録がありません。</p>';
+        : '<p class="result-meta">No incorrect results yet.</p>';
     }
 
     const recentList = qs('[data-list="recent-attempts"]');
     if (recentList) {
       recentList.innerHTML = summary.recentAttempts.length
         ? summary.recentAttempts.slice(0, 6).map(attemptItemHtml).join("")
-        : '<p class="result-meta">リスニング・打鍵練習から記録されると、ここに表示されます。</p>';
+        : '<p class="result-meta">Practice results will appear here.</p>';
     }
 
     const tbody = qs("[data-history-table]");
@@ -1154,10 +1179,10 @@ playButton.addEventListener("click", playCurrent);
             <td>${escapeHtml(modeLabel(attempt.mode))}</td>
             <td>${escapeHtml(attempt.expected || attempt.prompt)}</td>
             <td>${escapeHtml(attempt.answer || "-")}</td>
-            <td>${attempt.correct ? "正解" : "不正解"}</td>
+            <td>${attempt.correct ? "Correct" : "Incorrect"}</td>
           </tr>
         `).join("")
-        : '<tr><td colspan="5">まだ記録がありません。</td></tr>';
+        : '<tr><td colspan="5">No results yet.</td></tr>';
     }
   };
 
@@ -1224,7 +1249,7 @@ playButton.addEventListener("click", playCurrent);
       syncSettingsForm();
     }
 
-    if (action === "clear-progress" && confirm("この端末の練習記録を消去します。設定は残します。")) {
+    if (action === "clear-progress" && confirm("Delete all practice results from this browser? Your settings will be kept.")) {
       clearProgress();
       renderSummary();
     }
@@ -1298,10 +1323,10 @@ let keyingSession = {
 };
 
 const keyingLevelLabels = {
-  single: "初級",
+  single: "Beginner",
   word: "A-Z",
   phrase: "0-9",
-  sentence: "英数字"
+  sentence: "Letters + numbers"
 };
 
 function keyingSettings() {
@@ -1348,15 +1373,15 @@ function setKeyingTarget(item) {
 
 function renderKeyingSessionMeta() {
   const currentQuestion = Math.min(keyingSession.answered + 1, keyingSession.total);
-  document.querySelectorAll("[data-session-summary]").forEach((node) => {
-    node.textContent = `第${currentQuestion}問 / ${keyingSession.total}問`;
+  document.querySelectorAll('[data-screen="keying"] [data-session-summary]').forEach((node) => {
+    node.textContent = `Question ${currentQuestion} of ${keyingSession.total}`;
   });
   if (!keyingEls.meta) return;
   if (!keyingSession.active) {
-    keyingEls.meta.textContent = "Home から条件を選ぶと、問題数つきで開始できます。";
+    keyingEls.meta.textContent = "Choose a level and question count from Home.";
     return;
   }
-  keyingEls.meta.textContent = `レベル ${keyingLevelLabels[keyingSession.level] || keyingSession.level} / 第${currentQuestion}問 / 全${keyingSession.total}問`;
+  keyingEls.meta.textContent = `${keyingLevelLabels[keyingSession.level] || keyingSession.level} / Question ${currentQuestion} of ${keyingSession.total}`;
 }
 
 function startKeyingSession(options = {}) {
@@ -1377,7 +1402,7 @@ function startKeyingSession(options = {}) {
   if (keyingEls.check) keyingEls.check.disabled = false;
   if (keyingEls.next) keyingEls.next.disabled = false;
   setKeyingTarget(keyingSession.prompts[0]);
-  keyingEls.message.textContent = "打鍵してください。";
+  keyingEls.message.textContent = "Press the key.";
   keyingEls.message.classList.remove("is-correct", "is-error");
   renderKeyingSessionMeta();
   activateAppScreen("keying");
@@ -1391,9 +1416,9 @@ function finishKeyingSession() {
   if (keyingEls.next) keyingEls.next.disabled = true;
   if (keyingEls.complete) keyingEls.complete.hidden = false;
   if (keyingEls.completeSummary) {
-    keyingEls.completeSummary.textContent = `${keyingSession.total}問中 ${keyingSession.correct}問正解です。`;
+    keyingEls.completeSummary.textContent = `${keyingSession.correct} correct out of ${keyingSession.total}.`;
   }
-  keyingEls.message.textContent = "セッション完了です。";
+  keyingEls.message.textContent = "Session complete.";
   keyingEls.message.classList.toggle("is-correct", keyingSession.correct === keyingSession.total);
   keyingEls.message.classList.toggle("is-error", keyingSession.correct < keyingSession.total);
   renderKeyingSessionMeta();
@@ -1404,7 +1429,7 @@ function advanceKeyingQuestion() {
   keyingSession.currentIndex += 1;
   keyingSession.awaitingNext = false;
   setKeyingTarget(keyingSession.prompts[keyingSession.currentIndex]);
-  keyingEls.message.textContent = "打鍵してください。";
+  keyingEls.message.textContent = "Press the key.";
   keyingEls.message.classList.remove("is-correct", "is-error");
   renderKeyingSessionMeta();
 }
@@ -1412,8 +1437,8 @@ function advanceKeyingQuestion() {
 function updateKeying() {
   if (!keyingEls.target) return;
   keyingEls.target.textContent = keyingTarget.letter;
-  keyingEls.answer.textContent = `正解 ${keyingTarget.code}`;
-  keyingEls.input.textContent = keyingInput || "未入力";
+  keyingEls.answer.textContent = `Answer ${keyingTarget.code}`;
+  keyingEls.input.textContent = keyingInput || "No input";
 }
 
 function addKeyingMark(mark) {
@@ -1421,7 +1446,7 @@ function addKeyingMark(mark) {
   if (keyingSession.awaitingNext) return;
   keyingInput += mark;
   updateKeying();
-  keyingEls.message.textContent = mark === "." ? "短点を入力しました。" : "長点を入力しました。";
+  keyingEls.message.textContent = mark === "." ? "Dot entered." : "Dash entered.";
   keyingEls.message.classList.remove("is-correct", "is-error");
 }
 
@@ -1439,7 +1464,7 @@ function nextKeyingTarget() {
     if (keyingSession.awaitingNext) {
       advanceKeyingQuestion();
     } else {
-      keyingEls.message.textContent = "先に答え合わせしてください。";
+      keyingEls.message.textContent = "Check your answer first.";
       keyingEls.message.classList.add("is-error");
       keyingEls.message.classList.remove("is-correct");
     }
@@ -1448,7 +1473,7 @@ function nextKeyingTarget() {
   keyingIndex = (keyingIndex + 1) % letters.length;
   keyingTarget = letters[keyingIndex];
   keyingInput = "";
-  keyingEls.message.textContent = "次のお題です。";
+  keyingEls.message.textContent = "Next question.";
   updateKeying();
 }
 
@@ -1474,17 +1499,17 @@ function bindKeying() {
   keyingEls.check.addEventListener("click", () => {
     if (keyingSession.complete) return;
     if (keyingSession.awaitingNext) {
-      keyingEls.message.textContent = "次のお題へ進んでください。";
+      keyingEls.message.textContent = "Continue to the next question.";
       return;
     }
     if (!keyingInput) {
-      keyingEls.message.textContent = "まだ入力がありません。";
+      keyingEls.message.textContent = "No input yet.";
       keyingEls.message.classList.add("is-error");
       keyingEls.message.classList.remove("is-correct");
       return;
     }
     const correct = keyingInput === keyingTarget.code;
-    keyingEls.message.textContent = correct ? "正解です。" : `違います。${keyingTarget.letter} は ${keyingTarget.code} です。`;
+    keyingEls.message.textContent = correct ? "Correct." : `Incorrect. ${keyingTarget.letter} is ${keyingTarget.code}.`;
     keyingEls.message.classList.toggle("is-correct", correct);
     keyingEls.message.classList.toggle("is-error", !correct);
     recordProgress("keying", keyingTarget.letter, keyingTarget.code, keyingInput, correct, keyingSession.level);
@@ -1501,7 +1526,7 @@ function bindKeying() {
   keyingEls.clear.addEventListener("click", () => {
     if (keyingSession.awaitingNext || keyingSession.complete) return;
     keyingInput = "";
-    keyingEls.message.textContent = "入力を消しました。";
+    keyingEls.message.textContent = "Input cleared.";
     updateKeying();
   });
   keyingEls.next.addEventListener("click", nextKeyingTarget);
@@ -1515,7 +1540,7 @@ function bindKeying() {
     if (keyingEls.complete) keyingEls.complete.hidden = true;
     if (keyingEls.check) keyingEls.check.disabled = false;
     if (keyingEls.next) keyingEls.next.disabled = false;
-    keyingEls.message.textContent = "リセットしました。";
+    keyingEls.message.textContent = "Practice reset.";
     updateKeying();
     renderKeyingSessionMeta();
   });

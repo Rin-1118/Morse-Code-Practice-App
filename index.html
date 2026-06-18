@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Morse Code Practice App</title>
+    <link rel="stylesheet" href="./styles.css?v=theme-toggle-20260607-1">
+  </head>
+  <body>
+    <header class="app-header glass-panel">
+      <div>
+        <p class="eyebrow">Morse Code Practice App</p>
+        <h1>Home</h1>
+      </div>
+      <nav class="app-nav" aria-label="主要画面">
+        <button class="app-nav__button is-active" type="button" data-screen-target="home">Home</button>
+        <button class="app-nav__button" type="button" data-screen-target="tutorial">チュートリアル</button>
+        <button class="app-nav__button" type="button" data-screen-target="profile">マイページ</button>
+        <button class="app-nav__button" type="button" data-screen-target="settings">詳細設定</button>
+      </nav>
+      <button class="theme-toggle-button" type="button" data-action="toggle-theme" aria-label="テーマを切り替え">
+        <span class="theme-toggle-button__icon" aria-hidden="true">◐</span>
+        <span data-theme-toggle-label>ダーク</span>
+      </button>
+    </header>
+
+    <main class="app-main">
+      <section class="app-screen is-active" data-screen="home" aria-labelledby="home-title">
+        <div class="home-hero glass-panel">
+          <p class="eyebrow">Home</p>
+          <h2 id="home-title">モールス練習を始める</h2>
+          <p>最初に練習方法を選び、次にレベルと問題数を決めてから実練習へ進みます。</p>
+          <button class="primary-button start-button" type="button" data-action="open-mode-select">start</button>
+        </div>
+      </section>
+
+      <section class="app-screen" data-screen="mode" aria-labelledby="mode-title">
+        <div class="section__head">
+          <p class="eyebrow">Mode Select</p>
+          <h2 id="mode-title">練習方法を選ぶ</h2>
+          <p>リスニング練習か打鍵練習を選んでください。</p>
+        </div>
+        <div class="mode-grid">
+          <button class="mode-card glass-panel" type="button" data-session-mode="listening">
+            <span class="morse-badge">.-</span>
+            <strong>リスニング練習</strong>
+            <small>音を聞いて文字を入力する</small>
+          </button>
+          <button class="mode-card glass-panel" type="button" data-session-mode="keying">
+            <span class="morse-badge">-.-</span>
+            <strong>打鍵練習</strong>
+            <small>短点・長点を自分で打つ</small>
+          </button>
+        </div>
+      </section>
+
+      <section class="app-screen" data-screen="session" aria-labelledby="session-title">
+        <div class="session-card glass-panel">
+          <p class="eyebrow">Session Setup</p>
+          <h2 id="session-title">レベルと問題数</h2>
+          <p><span data-session-mode-label>リスニング練習</span> の条件を指定します。</p>
+          <div class="level-grid" role="radiogroup" aria-label="練習レベル">
+            <label class="level-option"><input type="radio" name="sessionLevel" value="single" checked><span>1文字</span></label>
+            <label class="level-option"><input type="radio" name="sessionLevel" value="word"><span>短い単語</span></label>
+            <label class="level-option"><input type="radio" name="sessionLevel" value="phrase"><span>短文</span></label>
+            <label class="level-option"><input type="radio" name="sessionLevel" value="sentence"><span>長文</span></label>
+          </div>
+          <label class="question-count-field">
+            <span>問題数</span>
+            <input name="sessionQuestionCount" type="number" min="1" max="50" step="1" value="10" inputmode="numeric">
+          </label>
+          <div class="session-actions">
+            <button class="secondary-button" type="button" data-action="back-to-mode">戻る</button>
+            <button class="primary-button" type="button" data-action="start-session">練習へ進む</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-screen listening-screen" data-screen="listening" aria-labelledby="listening-app-title">
+        <div class="section__head">
+          <p class="eyebrow">Listening Practice</p>
+          <h2 id="listening-app-title">音を聞いて入力する</h2>
+          <p><span data-session-summary>第1問 / 10問</span></p>
+        </div>
+        <div class="listening-app" data-listening-app>
+          <section class="listening-card listening-card--practice glass-panel" data-listening-practice aria-labelledby="listening-practice-title">
+            <div class="listening-card__head">
+              <div>
+                <p class="eyebrow">Quiz</p>
+                <h3 id="listening-practice-title">聞き取り問題</h3>
+                <p class="listening-question-count" data-listening-question-count>第1問</p>
+              </div>
+              <button class="secondary-button" type="button" data-action="next-listening">次の問題</button>
+            </div>
+            <div class="listening-player">
+              <p data-listening-status>再生できます</p>
+              <div class="listening-actions">
+                <button class="primary-button" type="button" data-action="play-listening">再生</button>
+                <button class="secondary-button" type="button" data-action="replay-listening">もう一度</button>
+              </div>
+            </div>
+            <form class="answer-form" data-listening-form autocomplete="off">
+              <label for="listening-answer">聞こえた内容</label>
+              <div class="answer-row">
+                <input id="listening-answer" name="answer" type="text" inputmode="latin" spellcheck="false" placeholder="例: CQ TEST">
+                <button class="primary-button" type="submit">判定</button>
+              </div>
+            </form>
+            <div class="listening-result is-empty" data-listening-result aria-live="polite">まだ判定していません。</div>
+            <div class="listening-question-stack" data-listening-stack aria-label="完了した問題カード"></div>
+          </section>
+          <aside class="listening-card glass-panel" aria-labelledby="listening-progress-title">
+            <div class="listening-card__head">
+              <div>
+                <p class="eyebrow" data-listening-session-level>1文字</p>
+                <h3 id="listening-progress-title">直近の記録</h3>
+                <p class="listening-question-count" data-listening-session-summary>10問中 0問回答 / 正解 0問</p>
+              </div>
+              <strong data-listening-accuracy>--</strong>
+            </div>
+            <ol data-listening-history></ol>
+          </aside>
+        </div>
+      </section>
+
+      <section class="app-screen" id="keying" data-screen="keying" aria-labelledby="keying-app-title">
+        <div class="app-placeholder keying-app glass-panel">
+          <div>
+            <p class="eyebrow">Keying</p>
+            <h2 id="keying-app-title">短点・長点を自分で打つ練習</h2>
+            <p><span data-session-summary>第1問 / 10問</span></p>
+            <div class="keying-target-row" aria-live="polite">
+              <span class="eyebrow">Target</span>
+              <strong id="keying-target">A</strong>
+              <span id="keying-answer">正解 .-</span>
+            </div>
+          </div>
+          <div class="keying-pad-wrap">
+            <button id="keying-pad" class="keying-pad" type="button" aria-label="打鍵ボタン">
+              <span class="keying-pad__main">KEY</span>
+              <span class="keying-pad__sub">短押し: 短点 / 長押し: 長点</span>
+            </button>
+          </div>
+        </div>
+        <div class="keying-layout">
+          <article class="keying-card glass-panel">
+            <h3>入力</h3>
+            <p id="keying-input" class="keying-code">未入力</p>
+          </article>
+          <article class="keying-card glass-panel">
+            <h3>判定</h3>
+            <p id="keying-message" class="keying-message" aria-live="assertive">打鍵してください。</p>
+            <div class="keying-actions">
+              <button id="keying-check" class="keying-action keying-action--primary" type="button">答え合わせ</button>
+              <button id="keying-clear" class="keying-action" type="button">入力を消す</button>
+              <button id="keying-next" class="keying-action" type="button">次のお題</button>
+              <button id="keying-reset" class="keying-action" type="button">リセット</button>
+            </div>
+            <p class="keying-note">短点上限は Settings の「打鍵の短点上限」を読みます。</p>
+          </article>
+        </div>
+        <article class="keying-card keying-complete glass-panel" id="keying-complete" hidden>
+          <h3>完了</h3>
+          <p id="keying-complete-summary">結果を集計中です。</p>
+          <div class="keying-actions">
+            <button class="keying-action keying-action--primary" type="button" data-keying-retry>同じ条件でもう一度</button>
+            <button class="keying-action" type="button" data-action="open-home">Homeへ</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="app-screen" data-screen="tutorial" aria-labelledby="tutorial-title">
+        <div class="tutorial-hero glass-panel">
+          <img class="hero__image" src="./assets/morse-hero.png" alt="電鍵とモールス信号の学習イメージ">
+          <div>
+            <p class="eyebrow">Tutorial</p>
+            <h2 id="tutorial-title">大文字の形から、短点と長点を思い出す</h2>
+            <p>符号表の事実、動画から直接確認できた提示形式、こちらで教材化した覚え方を分けて扱います。</p>
+          </div>
+        </div>
+        <section class="section video-reference glass-panel">
+          <div class="section__head">
+            <p class="eyebrow">Reference Video</p>
+            <h2>参考動画の扱い</h2>
+          </div>
+          <div class="video-reference__grid">
+            <article>
+              <h3>動画から直接確認した内容</h3>
+              <p>
+                YouTube Shorts「【雑学】『モールス信号（アルファベット）』を解説【暗記】」は、説明欄で A から Z までの
+                アルファベットのモールス符号を列挙しています。ブラウザ上の動画表示では、大文字を中央に大きく置き、
+                その下へ短点・長点を白い記号で並べる形式を確認しました。
+              </p>
+            </article>
+            <article>
+              <h3>こちらで教材化した解釈</h3>
+              <p>
+                このチュートリアルでは、動画の「大文字 + 符号を同時に見る」提示形式を土台にし、各カードで
+                文字の形から短点・長点の順序を思い出す補助記憶へ広げています。個別の語呂合わせは動画由来とは扱いません。
+              </p>
+            </article>
+          </div>
+        </section>
+        <section id="letters" class="section section--tight">
+          <div class="section__head">
+            <p class="eyebrow">Letter To Rhythm</p>
+            <h2>アルファベットから打鍵へ</h2>
+          </div>
+          <div class="trainer">
+            <aside class="letter-grid glass-panel" aria-label="アルファベット一覧"></aside>
+            <section class="stage glass-panel" aria-live="polite">
+              <div class="letter-stage">
+                <div class="letter-shape" data-letter="A">A</div>
+                <div class="morse-track" aria-hidden="true"></div>
+              </div>
+              <div class="selected-info">
+                <div>
+                  <p class="eyebrow">Selected</p>
+                  <h3><span id="selected-letter">A</span> <span id="selected-code">.-</span></h3>
+                </div>
+                <button id="play-button" class="icon-button" type="button" aria-label="選択中の符号を再生"><span class="play-mark">▶</span></button>
+              </div>
+              <div class="memo-split">
+                <p><strong>動画で確認:</strong> <span id="selected-video-note">A = .-。説明欄の A-Z 符号列に基づきます。</span></p>
+                <p><strong>教材化した解釈:</strong> <span id="selected-memo">A は最初に軽く入ってから、右脚で長く支える形として「短・長」を思い出します。</span></p>
+              </div>
+            </section>
+          </div>
+        </section>
+        <section id="rules" class="section">
+          <div class="section__head">
+            <p class="eyebrow">Facts</p>
+            <h2>基本ルール</h2>
+          </div>
+          <div class="fact-grid">
+            <article class="glass-panel"><h3>符号の単位</h3><p>ITU-R M.1677-1 では、長点は短点3個分、文字間隔は短点3個分、語間隔は短点7個分と示されています。</p></article>
+            <article class="glass-panel"><h3>聞く練習</h3><p>点と線を数えるより、文字ごとの音形をひとまとまりとして聞く練習が実戦向きです。</p></article>
+            <article class="glass-panel"><h3>このページの立場</h3><p>文字形連想は入口です。最終目標は音のまとまりを直接文字として認識することです。</p></article>
+          </div>
+        </section>
+        <section id="sources" class="section section--sources glass-panel">
+          <div class="section__head">
+            <p class="eyebrow">Sources</p>
+            <h2>使用出典</h2>
+          </div>
+          <ul class="sources">
+            <li><a href="https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1677-1-200910-I!!PDF-E.pdf">ITU-R Recommendation M.1677-1, International Morse code</a></li>
+            <li><a href="https://www.si.edu/spotlight/telegraph/morse-code">Smithsonian, Morse Code</a></li>
+            <li><a href="https://www.arrl.org/learning-morse-code">ARRL, Learning Morse Code</a></li>
+            <li><a href="https://youtube.com/shorts/qMZSorHTx8s?si=2bK3xujrHHVfvm25">YouTube Shorts: 【雑学】「モールス信号（アルファベット）」を解説【暗記】</a></li>
+          </ul>
+        </section>
+      </section>
+
+      <section class="app-screen" data-screen="profile" aria-labelledby="profile-title">
+        <div class="section__head">
+          <p class="eyebrow">Profile</p>
+          <h2 id="profile-title">マイページ</h2>
+          <p>端末内の練習記録を集計します。詳細設定は別ページに分離しています。</p>
+        </div>
+        <div class="stat-grid" aria-live="polite">
+          <article class="stat-card glass-panel"><span>総練習数</span><strong data-stat="total">0</strong></article>
+          <article class="stat-card glass-panel"><span>正解率</span><strong data-stat="accuracy">0%</strong></article>
+          <article class="stat-card glass-panel"><span>現在の連続正解</span><strong data-stat="currentStreak">0</strong></article>
+          <article class="stat-card glass-panel"><span>自己ベスト</span><strong data-stat="bestStreak">0</strong></article>
+        </div>
+        <div class="profile-grid">
+          <article class="profile-panel glass-panel"><h3>間違えやすい対象</h3><div class="result-list" data-list="weak-items"></div></article>
+          <article class="profile-panel glass-panel"><h3>最近の記録</h3><div class="result-list" data-list="recent-attempts"></div></article>
+        </div>
+        <div class="table-wrap glass-panel">
+          <table>
+            <thead><tr><th>日時</th><th>種類</th><th>出題</th><th>回答</th><th>結果</th></tr></thead>
+            <tbody data-history-table><tr><td colspan="5">まだ記録がありません。</td></tr></tbody>
+          </table>
+        </div>
+        <div class="settings-actions">
+          <button class="danger-button" type="button" data-action="clear-progress">記録を消去</button>
+        </div>
+      </section>
+
+      <section class="app-screen" data-screen="settings" aria-labelledby="settings-title">
+        <div class="section__head">
+          <p class="eyebrow">Settings</p>
+          <h2 id="settings-title">詳細設定</h2>
+          <p>テーマ、音、出題範囲など、練習前に細かく変えたい項目をここへ集約します。</p>
+        </div>
+        <form class="settings-form glass-panel" data-settings-form>
+          <label class="field"><span>音の速さ <output data-output="speedWpm">18 WPM</output></span><input name="speedWpm" type="range" min="8" max="35" step="1"></label>
+          <label class="field"><span>ピッチ <output data-output="pitchHz">600 Hz</output></span><input name="pitchHz" type="range" min="350" max="900" step="10"></label>
+          <label class="field"><span>音量 <output data-output="volume">70%</output></span><input name="volume" type="range" min="0" max="100" step="1"></label>
+          <label class="field"><span>出題レベル</span><select name="level"><option value="single">1文字</option><option value="word">短い単語</option><option value="phrase">短文</option><option value="sentence">長文</option></select></label>
+          <label class="field"><span>練習対象</span><select name="targetSet"><option value="letters">A-Z</option><option value="numbers">0-9</option><option value="lettersNumbers">A-Z / 0-9</option><option value="custom">カスタム</option></select></label>
+          <label class="field" data-custom-target-field><span>カスタム対象</span><input name="customTargets" type="text" inputmode="latin" autocomplete="off" placeholder="例: A E I O U 1 2"></label>
+          <label class="field"><span>打鍵の短点上限 <output data-output="keyingDotThresholdMs">240 ms</output></span><input name="keyingDotThresholdMs" type="range" min="80" max="800" step="10"></label>
+          <fieldset class="theme-field">
+            <legend>表示テーマ</legend>
+            <label><input name="theme" type="radio" value="system">端末に合わせる</label>
+            <label><input name="theme" type="radio" value="light">ライト</label>
+            <label><input name="theme" type="radio" value="dark">ダーク</label>
+          </fieldset>
+        </form>
+        <div class="settings-actions">
+          <button class="secondary-button" type="button" data-action="reset-settings">標準に戻す</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js?v=theme-toggle-20260607-1"></script>
+  </body>
+</html>
